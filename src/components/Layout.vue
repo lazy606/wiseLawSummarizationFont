@@ -1,3 +1,12 @@
+<script setup lang="ts">
+import {Button, Flex} from "ant-design-vue";
+import TextInput from "./TextInput.vue";
+import TextOutput from "./TextOutput.vue";
+import Header from "./Header.vue";
+import Navigator from "./Navigator.vue";
+
+</script>
+
 <template>
   <div id="globalContainer">
     <Flex vertical gap="large" justify="center"  align="center">
@@ -12,28 +21,19 @@
           </div>
           <div id="ioContainer">
             <Flex gap="large" justify="center" align="center">
-              <TextInput/>
+              <RouterView/>
               <TextOutput/>
             </Flex>
           </div>
         </Flex>
       </div>
 
+      <div id="footerContainer">
+        <Flex></Flex>
+      </div>
     </Flex>
   </div>
 </template>
-
-<script>
-import {Button, Flex} from "ant-design-vue";
-import TextInput from "./TextInput.vue";
-import TextOutput from "./TextOutput.vue";
-import Header from "./Header.vue";
-import Navigator from "./Navigator.vue";
-export default {
-  name: "Layout",
-  components: {Navigator, Header, TextOutput, TextInput, Button, Flex}
-}
-</script>
 
 <style scoped>
 #globalContainer {

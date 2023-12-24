@@ -1,17 +1,13 @@
+<script setup lang="ts">
+import {Textarea} from "ant-design-vue";
+
+</script>
+
 <template>
   <div id="outputContainer">
       <Textarea value="总结的文本"></Textarea>
   </div>
 </template>
-
-<script lang="ts">
-import {Textarea, Flex} from "ant-design-vue";
-
-export default {
-  name: "TextOutput",
-  components: {Textarea, Flex}
-}
-</script>
 
 <style scoped>
 #outputContainer {
