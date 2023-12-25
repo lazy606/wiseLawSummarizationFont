@@ -7,14 +7,14 @@ import {Textarea} from "ant-design-vue";
 
 <template>
   <div id="inputContainer">
-    <Textarea placeholder="请输入要进行摘要的文本或上传文件" allowClear></Textarea>
+    <Textarea placeholder="请输入要进行摘要的文本或上传文件"></Textarea>
   </div>
 </template>
 
 <style scoped>
 #inputContainer {
   height: 30vh;
-  width: 50%;
+  width: 100%;
 }
 
 #inputContainer > :first-child {

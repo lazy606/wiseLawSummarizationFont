@@ -12,10 +12,10 @@ import {Textarea} from "ant-design-vue";
 <style scoped>
 #outputContainer {
     height: 30vh;
-    width: 50%;
+    width: 100%;
 }
 
-#outputContainer > :first-child {
+textarea {
   height: 100%;
   width: 100%;
 }

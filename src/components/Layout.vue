@@ -1,9 +1,30 @@
 <script setup lang="ts">
 import {Button, Flex} from "ant-design-vue";
-import TextInput from "./TextInput.vue";
-import TextOutput from "./TextOutput.vue";
+import {h, ref} from "vue";
+import {HistoryOutlined, TeamOutlined, EditOutlined, FileTextOutlined} from "@ant-design/icons-vue"
 import Header from "./Header.vue";
-import Navigator from "./Navigator.vue";
+import Input from "./Input.vue";
+import Output from "./Output.vue";
+
+
+function getInputMethodItemList() {
+  return null;
+}
+
+function getOutputMethodItemList() {
+  return null;
+}
+function getSummarization(path: String): String {
+  return null;
+}
+
+function getHistory() {
+  return null;
+}
+
+function postAdvice() {
+  return null;
+}
 
 </script>
 
@@ -15,21 +36,27 @@ import Navigator from "./Navigator.vue";
       </div>
 
       <div id="functionContainer">
-        <Flex vertical justify="flex-start">
-          <div id="navigatorContainer">
-            <Navigator/>
-          </div>
-          <div id="ioContainer">
-            <Flex gap="large" justify="center" align="center">
-              <RouterView/>
-              <TextOutput/>
-            </Flex>
-          </div>
+        <Flex gap="large" justify="center" align="center">
+          <Input/>
+          <Output/>
         </Flex>
       </div>
 
-      <div id="footerContainer">
-        <Flex></Flex>
+      <div id="footerContainer" >
+        <Flex justify="center" gap="large" align="center">
+          <div id="historyContainer">
+            <Flex vertical justify="center" align="center" gap="small">
+              <Button shape="circle" :icon="h(HistoryOutlined)" size="large"></Button>
+              <span>历史记录</span>
+            </Flex>
+          </div>
+          <div id="adviceContainer">
+            <Flex vertical justify="center" align="center" gap="small">
+              <Button shape="circle" :icon="h(TeamOutlined)" size="large"></Button>
+              <span>提供建议</span>
+            </Flex>
+          </div>
+        </Flex>
       </div>
     </Flex>
   </div>
@@ -58,18 +85,12 @@ import Navigator from "./Navigator.vue";
 
 #functionContainer {
   width: 90%;
+  height: 45vh;
 }
 
 #functionContainer > :first-child {
   width: 100%;
-}
-
-#navigatorContainer {
-  width: 100%;
-}
-
-#navigatorContainer > :first-child {
-  width: 100%;
+  height: 100%;
 }
 
 #ioContainer {
@@ -78,6 +99,34 @@ import Navigator from "./Navigator.vue";
 
 #ioContainer > :first-child {
   width: 100%;
+}
+
+#footerContainer {
+  width: 80%;
+  height: 15vh;
+}
+
+#footerContainer > :first-child {
+  width: 100%;
+  height: 100%;
+}
+
+#historyContainer {
+  height: 100%;
+}
+
+#historyContainer > :first-child {
+  width: 100%;
+  height: 100%;
+}
+
+#adviceContainer {
+  height: 100%;
+}
+
+#adviceContainer > :first-child {
+  width: 100%;
+  height: 100%;
 }
 </style>
 

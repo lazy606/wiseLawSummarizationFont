@@ -7,14 +7,14 @@ import {InboxOutlined} from "@ant-design/icons-vue"
 <template>
   <div id="fileInputContainer">
       <UploadDragger name="file" :multiple="true">
-      <p class="upload-drag-icon">
-        <inbox-outlined></inbox-outlined>
-      </p>
-      <p class="upload-text">Click or drag file to this area to upload</p>
-      <p class="upload-hint">
-        Support for a single or bulk upload. Strictly prohibit from uploading company data or other
-        band files
-      </p>
+        <p>
+          <inbox-outlined></inbox-outlined>
+        </p>
+        <p class="upload-text">Click or drag file to this area to upload</p>
+        <p class="upload-hint">
+          Support for a single or bulk upload. Strictly prohibit from uploading company data or other
+          band files
+        </p>
     </UploadDragger>
   </div>
 </template>
@@ -22,11 +22,12 @@ import {InboxOutlined} from "@ant-design/icons-vue"
 <style scoped>
 #fileInputContainer {
   height: 30vh;
-  width: 50%;
+  width: 100%;
 }
 
 #fileInputContainer > :first-child {
   height: 100%;
   width: 100%;
 }
+
 </style>

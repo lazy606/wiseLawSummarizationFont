@@ -1,20 +1,15 @@
-import {createRouter, createWebHashHistory, RouteRecordRaw} from "vue-router";
+import {createRouter, createWebHistory, RouteRecordRaw} from "vue-router";
+import TextInput from "../components/TextInput.vue";
+import FileInput from "../components/FileInput.vue";
+import TextOutput from "../components/TextOutput.vue";
+
 
 const routes: Array<RouteRecordRaw> = [
-    {
-        path: "/",
-        name: "textInput",
-        component: () => import("../components/TextInput.vue")
-    },
-    {
-        path: "/fileInput",
-        name: "fileInput",
-        component: () => import("../components/fileInput.vue")
-    },
+
 ]
 
 const router = createRouter({
-    history: createWebHashHistory(),
+    history: createWebHistory(),
     routes: routes
 })
 
