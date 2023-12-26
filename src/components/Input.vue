@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import {h, ref} from "vue";
+import {h, onBeforeMount, ref} from "vue";
 import {Tabs, TabPane} from "ant-design-vue";
 import {EditOutlined, FileTextOutlined} from "@ant-design/icons-vue";
-import {InputMethodItem} from "developer-library";
+import {InputMethodItem} from "../classes/index";
 import TextInput from "./TextInput.vue";
 import FileInput from "./FileInput.vue";
 
@@ -23,6 +23,7 @@ const inputMethodItemList = ref<ArrayLike<InputMethodItem>> ([
     component: FileInput
   }
 ]);
+
 
 const activeKey = ref('text');
 </script>

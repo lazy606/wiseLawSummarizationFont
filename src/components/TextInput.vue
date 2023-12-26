@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import {Textarea} from "ant-design-vue";
+import {post} from '../apis/api'
+
 
 
 </script>
@@ -7,7 +9,7 @@ import {Textarea} from "ant-design-vue";
 
 <template>
   <div id="inputContainer">
-    <Textarea placeholder="请输入要进行摘要的文本或上传文件"></Textarea>
+    <Textarea placeholder="请输入要进行摘要的文本或上传文件" @pressEnter=""></Textarea>
   </div>
 </template>
 

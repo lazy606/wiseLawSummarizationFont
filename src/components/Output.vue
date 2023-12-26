@@ -1,7 +1,7 @@
 <script setup lang="ts">
 
 import {h, ref} from "vue";
-import {OutputMethodItem} from "developer-library";
+import {OutputMethodItem} from "../classes/index";
 import {EditOutlined, FileTextOutlined} from "@ant-design/icons-vue";
 import {Tabs, TabPane} from "ant-design-vue";
 import TextOutput from "./TextOutput.vue";
