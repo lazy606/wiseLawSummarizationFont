@@ -1,63 +1,82 @@
 <script setup lang="ts">
-import {Button, Flex} from "ant-design-vue";
+import {Button, Flex, Menu, Tabs, TabPane} from "ant-design-vue";
 import {h, ref} from "vue";
 import {HistoryOutlined, TeamOutlined, EditOutlined, FileTextOutlined} from "@ant-design/icons-vue"
 import Header from "./Header.vue";
 import Input from "./Input.vue";
 import Output from "./Output.vue";
+import {InputMethodItem, OutputMethodItem} from "../classes";
+import TextInput from "./TextInput.vue";
+import FileInput from "./FileInput.vue";
+import TextOutput from "./TextOutput.vue";
+import QAOutput from "./QAOutput.vue";
 
 
-function getInputMethodItemList() {
-  return null;
-}
+const inputMethodItemList = ref<ArrayLike<InputMethodItem>> ([
+  {
+    key: 'text',
+    icon: () => h(EditOutlined),
+    label: '文本',
+    title: '文本',
+    component: TextInput
+  },
+    {
+    key: 'file',
+    icon: () => h(FileTextOutlined),
+    label: '文件',
+    title: '文件',
+    component: FileInput
+  }
+]);
 
-function getOutputMethodItemList() {
-  return null;
-}
-function getSummarization(path: String): String {
-  return null;
-}
+const outputMethodItemList = ref<ArrayLike<OutputMethodItem>> ([
+  {
+    key: 'cause',
+    icon: () => h(EditOutlined),
+    label: '案由',
+    title: '案由',
+    component: TextOutput
+  },
+    {
+    key: 'fact',
+    icon: () => h(FileTextOutlined),
+    label: '事实',
+    title: '事实',
+    component: QAOutput
+  }
+]);
 
-function getHistory() {
-  return null;
-}
-
-function postAdvice() {
-  return null;
-}
-
+const inputActiveKey = ref('text');
+const outputActiveKey =  ref('summarization');
 </script>
 
 <template>
   <div id="globalContainer">
-    <Flex vertical gap="large" justify="center"  align="center">
+    <Flex vertical justify="flex-start" align="center">
       <div id="headerContainer">
         <Header/>
       </div>
 
       <div id="functionContainer">
-        <Flex gap="large" justify="center" align="center">
-          <Input/>
-          <Output/>
+        <Flex justify="space-between" align="flex-start" gap="large">
+            <div id="inputContainer">
+              <Tabs v-model:activeKey="inputActiveKey" tabPosition="left">
+                <TabPane v-for="item in inputMethodItemList" :key="item.key" :tab="item.title" >
+                  <component :is="item.component"/>
+                </TabPane>
+              </Tabs>
+            </div>
+
+            <div id="buttonGroupContainer">
+
+            </div>
+
+          <div id="outputContainer">
+
+          </div>
         </Flex>
       </div>
 
-      <div id="footerContainer" >
-        <Flex justify="center" gap="large" align="center">
-          <div id="historyContainer">
-            <Flex vertical justify="center" align="center" gap="small">
-              <Button shape="circle" :icon="h(HistoryOutlined)" size="large"></Button>
-              <span>历史记录</span>
-            </Flex>
-          </div>
-          <div id="adviceContainer">
-            <Flex vertical justify="center" align="center" gap="small">
-              <Button shape="circle" :icon="h(TeamOutlined)" size="large"></Button>
-              <span>提供建议</span>
-            </Flex>
-          </div>
-        </Flex>
-      </div>
     </Flex>
   </div>
 </template>
@@ -84,8 +103,8 @@ function postAdvice() {
 }
 
 #functionContainer {
-  width: 90%;
-  height: 45vh;
+  width: 100%;
+  height: 85vh;
 }
 
 #functionContainer > :first-child {
@@ -93,40 +112,34 @@ function postAdvice() {
   height: 100%;
 }
 
-#ioContainer {
-  width: 90%;
+#inputContainer {
+  height: 100%;
+  width: 70%;
 }
 
-#ioContainer > :first-child {
+#inputContainer > :first-child {
+  height: 100%;
   width: 100%;
 }
 
-#footerContainer {
-  width: 80%;
-  height: 15vh;
+#buttonGroupContainer {
+  height: 100%;
+  width: 5%;
 }
 
-#footerContainer > :first-child {
+#buttonGroupContainer > :first-child {
+  height: 100%;
   width: 100%;
-  height: 100%;
 }
 
-#historyContainer {
+#outputContainer {
   height: 100%;
+  width: 30%;
 }
 
-#historyContainer > :first-child {
+#outputContainer > :first-child {
+  height: 100%;
   width: 100%;
-  height: 100%;
-}
-
-#adviceContainer {
-  height: 100%;
-}
-
-#adviceContainer > :first-child {
-  width: 100%;
-  height: 100%;
 }
 </style>
 
