@@ -11,6 +11,8 @@ interface InputMethodItem extends MethodItem{
     component: string
 }
 
-interface OutputMethodItem extends MethodItem{
-    component: string
+interface OutputMethodItem {
+    key: string,
+    title: string,
+    content: string
 }

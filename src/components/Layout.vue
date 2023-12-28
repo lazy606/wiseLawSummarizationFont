@@ -1,15 +1,12 @@
 <script setup lang="ts">
-import {Button, Flex, Menu, Tabs, TabPane} from "ant-design-vue";
+import {Button, Flex, Card, Tabs, TabPane} from "ant-design-vue";
 import {h, ref} from "vue";
 import {HistoryOutlined, TeamOutlined, EditOutlined, FileTextOutlined} from "@ant-design/icons-vue"
 import Header from "./Header.vue";
-import Input from "./Input.vue";
-import Output from "./Output.vue";
 import {InputMethodItem, OutputMethodItem} from "../classes";
 import TextInput from "./TextInput.vue";
 import FileInput from "./FileInput.vue";
-import TextOutput from "./TextOutput.vue";
-import QAOutput from "./QAOutput.vue";
+
 
 
 const inputMethodItemList = ref<ArrayLike<InputMethodItem>> ([
@@ -32,22 +29,22 @@ const inputMethodItemList = ref<ArrayLike<InputMethodItem>> ([
 const outputMethodItemList = ref<ArrayLike<OutputMethodItem>> ([
   {
     key: 'cause',
-    icon: () => h(EditOutlined),
-    label: '案由',
     title: '案由',
-    component: TextOutput
+    content: '无'
   },
     {
     key: 'fact',
-    icon: () => h(FileTextOutlined),
-    label: '事实',
     title: '事实',
-    component: QAOutput
+    content: '无'
+  },
+    {
+    key: 'fact2',
+    title: '事实2',
+    content: '无'
   }
 ]);
 
 const inputActiveKey = ref('text');
-const outputActiveKey =  ref('summarization');
 </script>
 
 <template>
@@ -58,21 +55,24 @@ const outputActiveKey =  ref('summarization');
       </div>
 
       <div id="functionContainer">
-        <Flex justify="space-between" align="flex-start" gap="large">
+        <Flex justify="space-around" align="flex-start" gap="large">
             <div id="inputContainer">
               <Tabs v-model:activeKey="inputActiveKey" tabPosition="left">
-                <TabPane v-for="item in inputMethodItemList" :key="item.key" :tab="item.title" >
-                  <component :is="item.component"/>
+                <TabPane v-for="item in inputMethodItemList" :key="item.key" :tab="item.title">
+                  <component :is="item.component" class="inputItem"/>
                 </TabPane>
               </Tabs>
             </div>
 
-            <div id="buttonGroupContainer">
-
-            </div>
-
           <div id="outputContainer">
-
+            
+            <Flex vertical justify="space-around" gap="large" >
+              <div class="outputItem" v-for="item in outputMethodItemList" :key="item.key">
+                <Card :title="item.title" hoverable :headStyle="{'text-align': 'left'}" :bodyStyle="{'text-align': 'start'}">
+                  {{item.content}}
+                </Card>
+              </div>
+            </Flex>
           </div>
         </Flex>
       </div>
@@ -110,11 +110,12 @@ const outputActiveKey =  ref('summarization');
 #functionContainer > :first-child {
   width: 100%;
   height: 100%;
+  margin-top: 2vh;
 }
 
 #inputContainer {
   height: 100%;
-  width: 70%;
+  width: 65%;
 }
 
 #inputContainer > :first-child {
@@ -122,14 +123,8 @@ const outputActiveKey =  ref('summarization');
   width: 100%;
 }
 
-#buttonGroupContainer {
-  height: 100%;
-  width: 5%;
-}
-
-#buttonGroupContainer > :first-child {
-  height: 100%;
-  width: 100%;
+.inputItem {
+  height: 85vh;
 }
 
 #outputContainer {
@@ -140,6 +135,15 @@ const outputActiveKey =  ref('summarization');
 #outputContainer > :first-child {
   height: 100%;
   width: 100%;
+}
+
+.outputItem {
+  height: 20vh;
+}
+
+.outputItem > :first-child {
+  width: 100%;
+  height: 100%;
 }
 </style>
 

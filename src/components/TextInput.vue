@@ -1,27 +1,22 @@
 <script setup lang="ts">
 import {Textarea} from "ant-design-vue";
-import {post} from '../apis/api'
+import {ref} from "vue";
+import {OutputMethodItem} from "../classes";
 
+const inputText = ref('');
 
-
+const getOutput = function (input: String): Array<OutputMethodItem> | null {
+  console.log(input)
+  return null;
+}
 </script>
 
 
 <template>
-  <div id="inputContainer">
-    <Textarea placeholder="请输入要进行摘要的文本或上传文件" @pressEnter=""></Textarea>
-  </div>
+  <Textarea placeholder="请输入文本，按回车查询内容..." v-model:value="inputText"></Textarea>
 </template>
 
 <style scoped>
-#inputContainer {
-  height: 30vh;
-  width: 100%;
-}
 
-#inputContainer > :first-child {
-  height: 100%;
-  width: 100%;
-}
 
 </style>
