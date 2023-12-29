@@ -7,7 +7,7 @@ import {InboxOutlined} from "@ant-design/icons-vue"
 
 <template>
   <div id="uploadContainer">
-    <UploadDragger name="file" :multiple="true">
+    <UploadDragger name="file" :multiple="true" >
       <p>
       <inbox-outlined></inbox-outlined>
       </p>

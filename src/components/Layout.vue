@@ -6,7 +6,7 @@ import Header from "./Header.vue";
 import {InputMethodItem, OutputMethodItem} from "../classes";
 import TextInput from "./TextInput.vue";
 import FileInput from "./FileInput.vue";
-import {outputMethodItemList} from "../store/store.ts";
+import {useApiStore} from "../store/apiStore.ts";
 
 
 const inputMethodItemList = ref<ArrayLike<InputMethodItem>> ([
@@ -26,8 +26,9 @@ const inputMethodItemList = ref<ArrayLike<InputMethodItem>> ([
   }
 ]);
 
-
 const inputActiveKey = ref('text');
+
+const apiStore = useApiStore()
 </script>
 
 <template>
@@ -50,7 +51,7 @@ const inputActiveKey = ref('text');
           <div id="outputContainer">
             
             <Flex vertical justify="space-around" gap="large" >
-              <div class="outputItem" v-for="item in outputMethodItemList" :key="item.key">
+              <div class="outputItem" v-for="item in apiStore.responseContent" :key="item.key">
                 <Card :title="item.title" hoverable :headStyle="{'text-align': 'left'}" :bodyStyle="{'text-align': 'start'}">
                   {{item.content}}
                 </Card>

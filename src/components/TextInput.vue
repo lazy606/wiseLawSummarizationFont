@@ -1,17 +1,19 @@
 <script setup lang="ts">
 import {Textarea} from "ant-design-vue";
 import {ref, watch} from "vue";
-import {store} from "../store/store.ts";
+import {useApiStore} from "../store/apiStore.ts";
 
 const inputText = ref('');
 let timer = null;
+const apiStore = useApiStore();
 
 watch(inputText,(curText, oldText) => {
   if (timer) {
     clearTimeout(timer);
   }
   timer = setTimeout(() => {
-    store.updateUploadText(inputText);
+    apiStore.setRequestContent(inputText.value);
+    apiStore.getAllSummarization();
   }, 5000);
 });
 </script>
