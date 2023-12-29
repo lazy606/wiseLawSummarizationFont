@@ -6,7 +6,7 @@ import Header from "./Header.vue";
 import {InputMethodItem, OutputMethodItem} from "../classes";
 import TextInput from "./TextInput.vue";
 import FileInput from "./FileInput.vue";
-
+import {outputMethodItemList} from "../store/store.ts";
 
 
 const inputMethodItemList = ref<ArrayLike<InputMethodItem>> ([
@@ -26,23 +26,6 @@ const inputMethodItemList = ref<ArrayLike<InputMethodItem>> ([
   }
 ]);
 
-const outputMethodItemList = ref<ArrayLike<OutputMethodItem>> ([
-  {
-    key: 'cause',
-    title: '案由',
-    content: '无'
-  },
-    {
-    key: 'fact',
-    title: '事实',
-    content: '无'
-  },
-    {
-    key: 'fact2',
-    title: '事实2',
-    content: '无'
-  }
-]);
 
 const inputActiveKey = ref('text');
 </script>
