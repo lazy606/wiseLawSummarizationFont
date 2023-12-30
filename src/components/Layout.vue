@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {Button, Flex, Card, Tabs, TabPane} from "ant-design-vue";
+import {Empty, Flex, Card, Tabs, TabPane, Spin} from "ant-design-vue";
 import {h, ref} from "vue";
 import {HistoryOutlined, TeamOutlined, EditOutlined, FileTextOutlined} from "@ant-design/icons-vue"
 import Header from "./Header.vue";
@@ -51,7 +51,13 @@ const apiStore = useApiStore()
           <div id="outputContainer">
             
             <Flex vertical justify="space-around" gap="large" >
-              <div class="outputItem" v-for="item in apiStore.responseContent" :key="item.key">
+              <div id="emptyStatusContainer" v-if="apiStore.responseContent.length == 0 && !apiStore.isRequesting">
+                <Empty/>
+              </div>
+              <div id="spinContainer" v-else-if="apiStore.responseContent == 0 && apiStore.isRequesting">
+                <Spin size="large"/>
+              </div>
+              <div class="outputItem" v-for="item in apiStore.responseContent" :key="item.key" v-else-if="!apiStore.responseContent == 0">
                 <Card :title="item.title" hoverable :headStyle="{'text-align': 'left'}" :bodyStyle="{'text-align': 'start'}">
                   {{item.content}}
                 </Card>

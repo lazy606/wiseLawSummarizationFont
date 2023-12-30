@@ -8,23 +8,7 @@ export const useApiStore = defineStore('api', {
         return {
             requestContent: ref(''),
             isRequesting: ref(false),
-            responseContent: ref<Array<OutputMethodItem | void>> ([
-              {
-                key: 'cause',
-                title: '案由',
-                content: '无'
-              },
-                {
-                key: 'fact',
-                title: '事实',
-                content: '无'
-              },
-                {
-                key: 'fact2',
-                title: '事实2',
-                content: '无'
-              }
-            ]),
+            responseContent: ref<Array<OutputMethodItem | void>> ([]),
         }
     },
     actions: {
@@ -37,11 +21,36 @@ export const useApiStore = defineStore('api', {
         async getAllSummarization(): Promise<void> {
             this.responseContent = [];
             this.switchIsRequesting();
-            let cause = await getCause(this.requestContent);
-            let fact = await getFact(this.requestContent);
-            let laws = await getLaws(this.requestContent);
-            this.responseContent.concat([cause, fact, laws]);
-            this.switchIsRequesting();
+            getCause(this.requestContent)
+                .then(data => {
+                    this.responseContent.push(data);
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+                .finally(() => {
+                    getFact(this.requestContent)
+                        .then(data => {
+                            this.responseContent.push(data);
+                        })
+                        .catch(err => {
+                            console.log(err);
+                        })
+                        .finally(() => {
+                            getLaws(this.requestContent)
+                                .then(data => {
+                                    this.responseContent.push(data);
+                                })
+                                .catch(err => {
+                                    console.log(err);
+                                })
+                                .finally(() => {
+                                     this.switchIsRequesting();
+                                })
+                        })
+                })
+
+
         }
     }
 })
