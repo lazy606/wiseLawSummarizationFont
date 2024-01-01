@@ -37,7 +37,7 @@ async function post<T>(url: string, data?: any): Promise<T> {
 // }
 
 export async function getCause(content: string): Promise<OutputMethodItem> {
-    return post<OutputMethodItem>('/cause', {content: content});
+    return post<OutputMethodItem>('/cause', {content: content, });
 }
 
 export async function getFact(content: string): Promise<OutputMethodItem> {

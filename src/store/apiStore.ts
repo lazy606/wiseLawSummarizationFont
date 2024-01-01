@@ -3,12 +3,14 @@ import {OutputMethodItem} from "../classes";
 import {ref} from "vue";
 import {getCause, getFact, getLaws} from "../apis/api.ts";
 
+
 export const useApiStore = defineStore('api', {
     state: () => {
         return {
             requestContent: ref(''),
             isRequesting: ref(false),
             responseContent: ref<Array<OutputMethodItem | void>> ([]),
+            uploadFileDisplayItem: ref({uploadFileFormat: '', uploadFileContent: File})
         }
     },
     actions: {
@@ -51,6 +53,10 @@ export const useApiStore = defineStore('api', {
                 })
 
 
-        }
+        },
+        setUploadFileDisplayItem(format: string, content: File): void {
+            this.uploadFileDisplayItem.uploadFileFormat = format;
+            this.uploadFileDisplayItem.uploadFileContent = content;
+        },
     }
 })

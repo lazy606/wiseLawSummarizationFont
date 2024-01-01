@@ -11,6 +11,10 @@
   "dependencies": {
     "ant-design-vue": "^4.0.8",
     "axios": "^1.6.2",
+    "js-base64": "^3.7.5",
+    "mammoth": "^1.6.0",
+    "pdf-parse": "^1.1.1",
+    "pdfjs-dist": "^2.11.338",
     "pinia": "^2.1.7",
     "vue": "^3.3.11"
   },
