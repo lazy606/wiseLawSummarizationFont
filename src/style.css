@@ -67,6 +67,7 @@ button:focus-visible {
   text-align: center;
   /*height: 90vh;*/
   width: 100%;
+  background-color: gainsboro;
 }
 
 @media (prefers-color-scheme: light) {
