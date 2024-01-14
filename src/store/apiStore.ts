@@ -2,6 +2,7 @@ import {defineStore} from "pinia";
 import {OutputMethodItem} from "../classes";
 import {ref} from "vue";
 import {getCause, getFact, getLaws} from "../apis/api.ts";
+// import mammoth from 'mammoth';
 
 
 export const useApiStore = defineStore('api', {
@@ -9,8 +10,7 @@ export const useApiStore = defineStore('api', {
         return {
             requestContent: ref(''),
             isRequesting: ref(false),
-            responseContent: ref<Array<OutputMethodItem | void>> ([]),
-            uploadFileDisplayItem: ref({uploadFileFormat: '', uploadFileContent: File})
+            responseContent: ref<Array<OutputMethodItem | void>> ([])
         }
     },
     actions: {
@@ -53,10 +53,6 @@ export const useApiStore = defineStore('api', {
                 })
 
 
-        },
-        setUploadFileDisplayItem(format: string, content: File): void {
-            this.uploadFileDisplayItem.uploadFileFormat = format;
-            this.uploadFileDisplayItem.uploadFileContent = content;
         },
     }
 })

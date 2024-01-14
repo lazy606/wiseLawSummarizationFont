@@ -16,7 +16,9 @@
     "pdf-parse": "^1.1.1",
     "pdfjs-dist": "^2.11.338",
     "pinia": "^2.1.7",
-    "vue": "^3.3.11"
+    "vue": "^3.3.11",
+    "vue-doc-preview": "^0.3.2",
+    "vue3-pdf-app": "^1.0.3"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.5.2",
